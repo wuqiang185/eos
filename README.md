@@ -181,7 +181,7 @@ producer-name = initt
 producer-name = initu
 # Load the block producer plugin, so you can produce blocks
 plugin = eosio::producer_plugin
-# Wallet plugin
+# Wallet API plugin
 plugin = eosio::wallet_api_plugin
 # As well as API and HTTP plugins
 plugin = eosio::chain_api_plugin
