@@ -206,7 +206,7 @@
  */
 #define Delete_Authority(...) BOOST_PP_OVERLOAD(DELAUTH, __VA_ARGS__)(__VA_ARGS__)
 /**
- * @brief Shorthand way to link named authority with a contract/message type
+ * @brief Shorthand way to link named authority with a contract/action type
  *
  * @code{.cpp}
  * // Link alice's "money" authority with eosio::transfer
@@ -217,7 +217,7 @@
  */
 #define Link_Authority(...) BOOST_PP_OVERLOAD(LINKAUTH, __VA_ARGS__)(__VA_ARGS__)
 /**
- * @brief Shorthand way to unlink named authority from a contract/message type
+ * @brief Shorthand way to unlink named authority from a contract/action type
  *
  * @code{.cpp}
  * // Unlink alice's authority for eosio::transfer
@@ -300,10 +300,10 @@
 { \
    eosio::chain::signed_transaction trx; \
    if (std::string(#stakeholder) != std::string(#proxy)) \
-      transaction_emplace_message(trx, config::eos_contract_name, \
+      transaction_emplace_action(trx, config::eos_contract_name, \
                          vector<types::account_permission>{ {#stakeholder,"active"} }, "setproxy", types::setproxy{#stakeholder, #proxy}); \
    else \
-      transaction_emplace_message(trx, config::eos_contract_name, \
+      transaction_emplace_action(trx, config::eos_contract_name, \
                          vector<types::account_permission>{ {#stakeholder,"active"} }, "setproxy", types::setproxy{#stakeholder, #proxy}); \
    trx.expiration = chain.head_block_time() + 100; \
    transaction_set_reference_block(trx, chain.head_block_id()); \
